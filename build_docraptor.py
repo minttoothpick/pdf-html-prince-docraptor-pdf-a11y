@@ -27,6 +27,14 @@ LOGO_FILE = HERE / "assets" / "otc-career-logo.png"
 # ============================================================
 
 CAMPUSES = {
+    "east": {
+        "campus_name": "East Campus",
+        "attn": "Records Request Department",
+        "street": "11550 Lokanotosa Trail",
+        "city_state_zip": "Orlando, FL 32817",
+        "slug": "east-campus",
+    },
+
     "main": {
         "campus_name": "Main Campus",
         "attn": "Records Request Department",
