@@ -54,7 +54,7 @@ CAMPUSES = {
     "west": {
         "campus_name": "West Campus",
         "attn": "Records Department",
-        "street": "2010 Ocoee - Apopka Rd",
+        "street": "2010 Ocoee Apopka Rd",
         "city_state_zip": "Ocoee, FL 34761",
         "slug": "west-campus",
     },
@@ -73,7 +73,7 @@ parser.add_argument(
     "--campus",
     required=True,
     choices=CAMPUSES.keys(),
-    help="Campus version to generate: main, south, or west.",
+    help="Campus version to generate: east, main, south, or west.",
 )
 
 parser.add_argument(
@@ -204,21 +204,29 @@ if logo_replacements != 1:
 
 
 # ============================================================
-# OUTPUT FILE
+# OUTPUT DIRECTORIES / FILE
 # ============================================================
 
+TEST_OUTPUT_DIR = HERE / "pdf_test"
+PRODUCTION_OUTPUT_DIR = HERE / "pdf_production"
+
 if test_mode:
+    output_dir = TEST_OUTPUT_DIR
     output_file = (
-        HERE
+        output_dir
         / f"transcript-request-{campus['slug']}-test.pdf"
     )
     mode_label = "TEST"
 else:
+    output_dir = PRODUCTION_OUTPUT_DIR
     output_file = (
-        HERE
+        output_dir
         / f"transcript-request-{campus['slug']}.pdf"
     )
     mode_label = "PRODUCTION"
+
+# Create the output directory if it does not already exist.
+output_dir.mkdir(parents=True, exist_ok=True)
 
 
 # ============================================================
