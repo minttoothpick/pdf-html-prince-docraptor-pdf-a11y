@@ -23,24 +23,63 @@ LOGO_FILE = HERE / "assets" / "otc-career-logo.png"
 
 
 # ============================================================
+# CAMPUS CONFIGURATION
+# ============================================================
+
+CAMPUSES = {
+    "main": {
+        "campus_name": "Main Campus",
+        "attn": "Records Request Department",
+        "street": "301 W Amelia St",
+        "city_state_zip": "Orlando, FL 32801",
+        "slug": "main-campus",
+    },
+
+    "south": {
+        "campus_name": "South Campus",
+        "attn": "Records Department",
+        "street": "2900 W Oak Ridge Rd",
+        "city_state_zip": "Orlando, FL 32809",
+        "slug": "south-campus",
+    },
+
+    "west": {
+        "campus_name": "West Campus",
+        "attn": "Records Department",
+        "street": "2010 Ocoee - Apopka Rd",
+        "city_state_zip": "Ocoee, FL 34761",
+        "slug": "west-campus",
+    },
+}
+
+
+# ============================================================
 # COMMAND-LINE OPTIONS
 # ============================================================
 
 parser = argparse.ArgumentParser(
-    description="Build the OTC transcript form with DocRaptor."
+    description="Build an OTC transcript request form with DocRaptor."
+)
+
+parser.add_argument(
+    "--campus",
+    required=True,
+    choices=CAMPUSES.keys(),
+    help="Campus version to generate: main, south, or west.",
 )
 
 parser.add_argument(
     "--production",
     action="store_true",
     help=(
-        "Create a non-test DocRaptor document. "
+        "Create a production DocRaptor document. "
         "This counts against the monthly document allowance."
     ),
 )
 
 args = parser.parse_args()
 
+campus = CAMPUSES[args.campus]
 test_mode = not args.production
 
 
@@ -70,18 +109,47 @@ for path in (HTML_FILE, CSS_FILE, LOGO_FILE):
 
 
 # ============================================================
-# BUILD SELF-CONTAINED HTML
+# LOAD SOURCE
 # ============================================================
 
 html = HTML_FILE.read_text(encoding="utf-8")
 css = CSS_FILE.read_text(encoding="utf-8")
 
 
-# Replace:
-#
-# <link rel="stylesheet" href="transcript-form.css">
-#
-# with the actual CSS.
+# ============================================================
+# INSERT CAMPUS-SPECIFIC CONTENT
+# ============================================================
+
+replacements = {
+    "{{CAMPUS_NAME}}": campus["campus_name"],
+    "{{ATTN}}": campus["attn"],
+    "{{STREET}}": campus["street"],
+    "{{CITY_STATE_ZIP}}": campus["city_state_zip"],
+}
+
+for placeholder, value in replacements.items():
+    if placeholder not in html:
+        sys.exit(
+            f"Required template placeholder not found: {placeholder}"
+        )
+
+    html = html.replace(placeholder, value)
+
+
+# Make sure no template placeholders remain accidentally.
+
+remaining_placeholders = re.findall(r"\{\{[^}]+\}\}", html)
+
+if remaining_placeholders:
+    sys.exit(
+        "Unresolved template placeholders remain:\n"
+        + "\n".join(remaining_placeholders)
+    )
+
+
+# ============================================================
+# EMBED CSS
+# ============================================================
 
 stylesheet_pattern = re.compile(
     r'<link\b'
@@ -104,7 +172,9 @@ if css_replacements != 1:
     )
 
 
-# Convert the local OTC logo into an embedded PNG data URI.
+# ============================================================
+# EMBED LOGO
+# ============================================================
 
 logo_bytes = LOGO_FILE.read_bytes()
 logo_base64 = base64.b64encode(logo_bytes).decode("ascii")
@@ -126,46 +196,57 @@ if logo_replacements != 1:
 
 
 # ============================================================
+# OUTPUT FILE
+# ============================================================
+
+if test_mode:
+    output_file = (
+        HERE
+        / f"transcript-request-{campus['slug']}-test.pdf"
+    )
+    mode_label = "TEST"
+else:
+    output_file = (
+        HERE
+        / f"transcript-request-{campus['slug']}.pdf"
+    )
+    mode_label = "PRODUCTION"
+
+
+# ============================================================
 # DOCRAPTOR REQUEST
 # ============================================================
 
 payload = {
     "type": "pdf",
-
-    # True = unlimited test document, but watermarked.
-    # False = production document, counts against plan allowance.
     "test": test_mode,
 
-    "name": "OTC South Campus Transcript Request",
+    "name": (
+        "Orange Technical College - "
+        f"{campus['campus_name']} Transcript Request"
+    ),
 
-    # Pin the current DocRaptor pipeline for reproducible output.
-    # Pipeline 10.1 currently uses Prince 15.1.
+    # Keep using the exact pipeline that produced our
+    # successful PDF/UA test.
     "pipeline": "10.1",
 
     "document_content": html,
 
     "prince_options": {
-        # Generate tagged PDF/UA output.
         "profile": "PDF/UA-1",
-
-        # Use print CSS.
         "media": "print",
-
-        # We already found locally that disabling font subsetting
-        # eliminated the CIDSet PDF/UA failure.
         "no_subset_fonts": True,
     },
 }
 
 
-# DocRaptor uses HTTP Basic authentication:
-# API key = username
-# password = blank
+# ============================================================
+# AUTHENTICATION
+# ============================================================
 
 credentials = base64.b64encode(
     f"{api_key}:".encode("utf-8")
 ).decode("ascii")
-
 
 request = urllib.request.Request(
     "https://api.docraptor.com/docs",
@@ -180,28 +261,28 @@ request = urllib.request.Request(
 
 
 # ============================================================
-# OUTPUT
+# BUILD
 # ============================================================
 
-if test_mode:
-    output_file = HERE / "docraptor-test.pdf"
-    mode_label = "TEST"
-else:
-    output_file = HERE / "docraptor-production.pdf"
-    mode_label = "PRODUCTION"
-
-
 print()
-print(f"Sending {mode_label} document to DocRaptor...")
+print(f"Campus: {campus['campus_name']}")
+print(f"Mode:   {mode_label}")
+print()
+print("Sending document to DocRaptor...")
 
 
 try:
     with urllib.request.urlopen(request, timeout=120) as response:
         pdf_bytes = response.read()
-        page_count = response.headers.get("X-DocRaptor-Num-Pages")
+        page_count = response.headers.get(
+            "X-DocRaptor-Num-Pages"
+        )
 
 except urllib.error.HTTPError as error:
-    body = error.read().decode("utf-8", errors="replace")
+    body = error.read().decode(
+        "utf-8",
+        errors="replace",
+    )
 
     print()
     print(f"DocRaptor returned HTTP {error.code}:")
@@ -212,37 +293,42 @@ except urllib.error.HTTPError as error:
     sys.exit(1)
 
 except urllib.error.URLError as error:
-    sys.exit(f"\nCould not connect to DocRaptor:\n{error}\n")
+    sys.exit(
+        f"\nCould not connect to DocRaptor:\n{error}\n"
+    )
 
 except Exception as error:
-    sys.exit(f"\nDocRaptor request failed:\n{error}\n")
-
-
-# Basic safety check: a PDF should begin with %PDF-
-
-if not pdf_bytes.startswith(b"%PDF-"):
     sys.exit(
-        "\nDocRaptor returned data that does not appear to be a PDF.\n"
+        f"\nDocRaptor request failed:\n{error}\n"
     )
 
 
+# ============================================================
+# VERIFY RESPONSE LOOKS LIKE PDF
+# ============================================================
+
+if not pdf_bytes.startswith(b"%PDF-"):
+    sys.exit(
+        "\nDocRaptor returned data that does not appear "
+        "to be a PDF.\n"
+    )
+
+
+# ============================================================
+# SAVE
+# ============================================================
+
 output_file.write_bytes(pdf_bytes)
 
-
+print()
 print(f"Created: {output_file}")
 
 if page_count:
     print(f"Pages:   {page_count}")
 
 if test_mode:
-    print("Mode:    TEST")
-    print("Note:    Test PDFs are watermarked.")
-    print()
-    print("When everything looks correct, run:")
-    print()
-    print("  python3 build_docraptor.py --production")
+    print("Mode:    TEST — does not use a production credit.")
 else:
-    print("Mode:    PRODUCTION")
-    print("Note:    This uses one document from your monthly allowance.")
+    print("Mode:    PRODUCTION — uses one production credit.")
 
 print()

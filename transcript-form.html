@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Orange Technical College - South Campus Transcript Request Form</title>
+  <title>Orange Technical College - {{CAMPUS_NAME}} Transcript Request Form</title>
   <meta name="author" content="Orange Technical College">
   <meta name="subject" content="Student Transcripts and Records Release Authorization">
   <link rel="stylesheet" href="transcript-form.css">
@@ -272,16 +272,11 @@
 
         <p class="authorization-text">
           <strong>
-            I authorize OTC – South Campus to release my transcripts/records to the above listed institution(s)<br>
-            or individual(s).
+            I authorize OTC – {{CAMPUS_NAME}} to release my transcripts/records to the above listed institution(s) or individual(s).
           </strong>
         </p>
 
         <div class="signature-row">
-          <!--
-          Confirm with OTC whether this should be a true PDF digital-signature
-          field or an ordinary text/signature field.
-        -->
           <label class="inline-field">
             Student Signature:
             <input type="prince-pdf-signature" name="student_signature" id="student_signature" title="Student Signature">
@@ -304,11 +299,10 @@
       </section>
 
       <aside class="mailing-block" aria-label="Mailing instructions">
-
-        <strong>Mail form and payment to: Orange Technical College – South Campus</strong><br>
-        <strong>Attn: Records Department</strong><br>
-        <strong>2900 W Oak Ridge Rd</strong><br>
-        <strong>Orlando, FL 32809</strong>
+        <strong>Mail form and payment to: Orange Technical College – {{CAMPUS_NAME}}</strong><br>
+        <strong>Attn: {{ATTN}}</strong><br>
+        <strong>{{STREET}}</strong><br>
+        <strong>{{CITY_STATE_ZIP}}</strong>
       </aside>
 
       <section class="office-use" aria-labelledby="office-heading">
@@ -321,11 +315,6 @@
             <input type="text" name="office_amount" title="Office Use: Amount">
           </label>
 
-          <!--
-          Confirm with OTC whether multiple payment methods may be selected.
-          If only one payment method is permitted, convert these checkboxes
-          to one radio-button group.
-        -->
           <fieldset class="payment-methods inline-radio">
             <legend class="visually-hidden">Payment Method</legend>
 
