@@ -1,0 +1,624 @@
+@page {
+  size: Letter;
+  margin: 0.22in 0.34in 0.18in;
+}
+
+@prince-pdf {
+  -prince-pdf-display-doc-title: true;
+  -prince-pdf-page-layout: single-page;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 9.85pt;
+}
+
+body {
+  margin: 0;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.12;
+}
+
+main {
+  width: 100%;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.doc-header {
+  text-align: center;
+  margin: 0 0 0.105in;
+}
+
+.logo {
+  display: block;
+  width: 2.15in;
+  height: auto;
+  margin: 0 auto 0.025in;
+}
+
+h1 {
+  margin: 0 0 0.045in;
+  font-size: 15.2pt;
+  line-height: 1.05;
+}
+
+.verification-note {
+  max-width: 7.35in;
+  margin: 0 auto 0.135in;
+  font-size: 9pt;
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0;
+  font-size: 10.8pt;
+  text-transform: uppercase;
+}
+
+.identifying h2 {
+  text-align: center;
+}
+
+.fee-note {
+  margin: 0.012in 0 0.12in;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   GENERAL FIELDS
+   ========================================================== */
+
+label {
+  font-weight: 700;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  font-weight: 700;
+}
+
+input[type='text'],
+input[type='prince-pdf-signature'] {
+  -prince-pdf-form: enable;
+  -prince-pdf-form-field-font-size: auto;
+
+  height: 0.21in;
+  border: 0;
+  border-bottom: 0.8px solid #111;
+  border-radius: 0;
+  background: transparent;
+  padding: 0 0.018in;
+
+  font: inherit;
+  font-weight: 400;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  -prince-pdf-form: enable;
+
+  width: 0.115in;
+  height: 0.115in;
+  margin: 0 0.025in 0 0;
+
+  vertical-align: -0.014in;
+  accent-color: #111;
+}
+
+.inline-field {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.inline-field input[type='text'],
+.inline-field input[type='prince-pdf-signature'] {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0.055in;
+}
+
+.middle {
+  max-width: 0.72in;
+}
+
+.state-input {
+  max-width: 0.48in;
+}
+
+.ssn-field input {
+  max-width: 1.15in;
+}
+
+/* ==========================================================
+   IDENTIFYING INFORMATION
+   Flexbox replacement for former CSS Grid
+   ========================================================== */
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 0.082in;
+}
+
+.row > * {
+  min-width: 0;
+}
+
+/* Last / First / Middle */
+.names-row > :nth-child(1) {
+  flex: 1.12 1 0;
+  margin-right: 0.18in;
+}
+
+.names-row > :nth-child(2) {
+  flex: 1.15 1 0;
+  margin-right: 0.18in;
+}
+
+.names-row > :nth-child(3) {
+  flex: 0.82 1 0;
+}
+
+/* Full-width rows */
+.one-row > * {
+  flex: 1 1 100%;
+}
+
+/* Student ID / DOB */
+.student-dob-row > :nth-child(1) {
+  flex: 1.2 1 0;
+  margin-right: 0.48in;
+}
+
+.student-dob-row > :nth-child(2) {
+  flex: 0.8 1 0;
+}
+
+/* SSN / Phone */
+.ssn-phone-row > :nth-child(1) {
+  flex: 0.86 1 0;
+  margin-right: 0.68in;
+}
+
+.ssn-phone-row > :nth-child(2) {
+  flex: 1.14 1 0;
+}
+
+/* Address / City / State / ZIP */
+.address-row > :nth-child(1) {
+  flex: 1.75 1 0;
+  margin-right: 0.1in;
+}
+
+.address-row > :nth-child(2) {
+  flex: 0.67 1 0;
+  margin-right: 0.1in;
+}
+
+.address-row > :nth-child(3) {
+  flex: 0.5 1 0;
+  margin-right: 0.1in;
+}
+
+.address-row > :nth-child(4) {
+  flex: 0.88 1 0;
+}
+
+.program-row {
+  width: 4.05in;
+}
+
+/* ==========================================================
+   INLINE RADIO GROUPS
+   ========================================================== */
+
+.inline-radio {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.inline-radio legend {
+  float: left;
+  margin-right: 0.07in;
+}
+
+.inline-radio label {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.inline-radio label + label {
+  margin-left: 0.085in;
+}
+
+/* ==========================================================
+   ENROLLMENT
+   ========================================================== */
+
+.enrollment-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin: 0.03in 0 0.1in;
+}
+
+.enrollment-choice {
+  flex: 0 0 auto;
+  margin-right: 0.13in;
+  white-space: nowrap;
+}
+
+.attendance {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.attendance input {
+  min-width: 1.08in;
+}
+
+/* ==========================================================
+   RECORD REQUEST
+   ========================================================== */
+
+.records {
+  border-top: 1.35px solid #111;
+  border-bottom: 1px solid #111;
+  padding: 0.09in 0 0.115in;
+}
+
+.record-fieldset legend {
+  margin-bottom: 0.07in;
+  font-size: 9.5pt;
+}
+
+/*
+  Explicit widths reproduce the former 3-column grid
+  without relying on CSS Grid.
+*/
+.radio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.radio-grid label {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.radio-grid label:nth-child(1) {
+  flex: 0 0 1.95in;
+  margin-right: 0.18in;
+}
+
+.radio-grid label:nth-child(2) {
+  flex: 0 0 2.45in;
+  margin-right: 0.18in;
+}
+
+.radio-grid label:nth-child(3) {
+  flex: 0 0 3in;
+}
+
+.radio-grid label:nth-child(4) {
+  flex: 0 0 1.95in;
+  margin-top: 0.07in;
+}
+
+.copies-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 0.13in;
+}
+
+.copies-row > :first-child {
+  flex: 1 1 0;
+  margin-right: 0.58in;
+}
+
+.copies-row > :last-child {
+  flex: 1 1 0;
+}
+
+.copies {
+  flex: 0 0 0.38in !important;
+  max-width: 0.38in;
+}
+
+/* ==========================================================
+   RECIPIENTS
+   ========================================================== */
+
+.recipients {
+  padding-top: 0.095in;
+}
+
+.recipients-heading-line {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.075in;
+}
+
+.recipients-heading-line h2 {
+  margin-right: 0.045in;
+  text-align: left;
+  font-size: 9.8pt;
+}
+
+.recipients-heading-line span {
+  font-size: 8.9pt;
+  font-weight: 700;
+}
+
+.recipient {
+  position: relative;
+  padding-left: 0.33in;
+  margin-bottom: 0.07in;
+}
+
+.recipient legend {
+  position: absolute;
+  left: 0.04in;
+  top: 0.01in;
+  font-size: 9.2pt;
+}
+
+.recipient-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 0.055in;
+}
+
+.recipient-row > * {
+  min-width: 0;
+}
+
+.name-recipient > * {
+  flex: 1 1 100%;
+}
+
+.address-recipient > :nth-child(1) {
+  flex: 2.05 1 0;
+  margin-right: 0.34in;
+}
+
+.address-recipient > :nth-child(2) {
+  flex: 0.9 1 0;
+}
+
+.state-recipient > :nth-child(1) {
+  flex: 0 0 1.15in;
+  margin-right: 0.45in;
+}
+
+.state-recipient > :nth-child(2) {
+  flex: 0 0 1.75in;
+}
+
+.zip-recipient input {
+  max-width: 1in;
+}
+
+/* ==========================================================
+   DATE FIELDS
+   ========================================================== */
+
+.inline-date {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.inline-date legend {
+  float: left;
+  margin: 0 0.045in 0 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.inline-date input[type='text'] {
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.date-month,
+.date-day {
+  width: 0.34in;
+}
+
+.date-year {
+  width: 0.55in;
+}
+
+.date-slash {
+  margin: 0 0.04in;
+  padding-bottom: 0.025in;
+  font-weight: 400;
+}
+
+/* ==========================================================
+   AUTHORIZATION / SIGNATURE
+   ========================================================== */
+
+.authorization {
+  margin-top: 0.08in;
+}
+
+.authorization-text {
+  margin: 0 0 0.075in 0.52in;
+  font-size: 9pt;
+  line-height: 1.3;
+}
+
+.signature-row {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 0.22in 0.08in 0.52in;
+}
+
+.signature-row > :nth-child(1) {
+  flex: 1.45 1 0;
+  min-width: 0;
+  margin-right: 1.05in;
+}
+
+.signature-row > :nth-child(2) {
+  flex: 0.65 1 0;
+  min-width: 0;
+}
+
+/* ==========================================================
+   MAILING BLOCK
+   ========================================================== */
+
+.mailing-block {
+  border-top: 1.35px solid #111;
+  border-bottom: 1.35px solid #111;
+  padding: 0.085in 0 0.09in;
+
+  text-align: center;
+  font-size: 9.15pt;
+  line-height: 1.32;
+}
+
+/* ==========================================================
+   OFFICE USE
+   ========================================================== */
+
+.office-use {
+  padding-top: 0.07in;
+}
+
+.office-use h2 {
+  margin-bottom: 0.085in;
+  text-align: center;
+  font-size: 10.2pt;
+}
+
+.office-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 0.065in;
+}
+
+.office-row > * {
+  min-width: 0;
+}
+
+/* Amount + payment methods */
+.payment-row > :first-child {
+  flex: 0.75 1 0;
+  margin-right: 0.22in;
+}
+
+.payment-row > :last-child {
+  flex: 2.35 1 0;
+}
+
+.amount input {
+  max-width: 0.55in;
+}
+
+.payment-methods {
+  justify-content: space-between;
+}
+
+.payment-methods label {
+  font-weight: 700;
+}
+
+/* Date Received / Received by
+   Date Sent / Outstanding Fees */
+.office-two > :first-child {
+  flex: 1.03 1 0;
+  margin-right: 0.7in;
+}
+
+.office-two > :last-child {
+  flex: 1.1 1 0;
+}
+
+.received-by input {
+  min-width: 1.55in;
+}
+
+.outstanding {
+  justify-content: flex-start;
+}
+
+/* Date completed + Sent by */
+.final-row > :first-child {
+  flex: 2.2 1 0;
+  margin-right: 0.35in;
+}
+
+.final-row > :last-child {
+  flex: 1 1 0;
+}
+
+.sent-by {
+  min-width: 0;
+}
+
+.sent-by input {
+  min-width: 0;
+}
+
+/* Comments gets its own full-width row */
+.comments-row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.comments {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.comments input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ==========================================================
+   VISUALLY HIDDEN ACCESSIBLE TEXT
+   ========================================================== */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

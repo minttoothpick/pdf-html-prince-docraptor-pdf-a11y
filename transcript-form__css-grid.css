@@ -1,0 +1,710 @@
+@page {
+  size: Letter;
+  margin: 0.22in 0.34in 0.18in;
+}
+
+@prince-pdf {
+  -prince-pdf-display-doc-title: true;
+  -prince-pdf-page-layout: single-page;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 9.25pt;
+}
+body {
+  margin: 0;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.08;
+}
+
+main {
+  width: 100%;
+}
+
+.doc-header {
+  text-align: center;
+  margin: 0 0 0.075in;
+}
+.logo {
+  width: 2.15in;
+  height: auto;
+  margin: 0 auto 0.015in;
+  display: block;
+}
+h1 {
+  font-size: 15.2pt;
+  margin: 0 0 0.035in;
+  line-height: 1.05;
+}
+.verification-note {
+  font-size: 9pt;
+  max-width: 7.35in;
+  margin: 0 auto 0.095in;
+  line-height: 1.2;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 10.8pt;
+  margin: 0;
+}
+.identifying h2 {
+  text-align: center;
+}
+.fee-note {
+  text-align: center;
+  font-weight: 700;
+  margin: 0.012in 0 0.09in;
+}
+
+.row {
+  display: grid;
+  align-items: end;
+  column-gap: 0.18in;
+  margin-bottom: 0.055in;
+}
+.names-row {
+  grid-template-columns: 1.12fr 1.15fr 0.82fr;
+}
+.one-row {
+  grid-template-columns: 1fr;
+}
+.student-dob-row {
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.48in;
+}
+.ssn-phone-row {
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: 0.68in;
+}
+.address-row {
+  grid-template-columns: 1.75fr 0.67fr 0.5fr 0.88fr;
+  gap: 0.1in;
+}
+.program-row {
+  width: 4.05in;
+}
+
+label {
+  font-weight: 700;
+}
+.inline-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.055in;
+  min-width: 0;
+  white-space: nowrap;
+}
+.inline-field input[type='text'],
+.inline-field input[type='prince-pdf-signature'] {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+input[type='text'],
+input[type='prince-pdf-signature'] {
+  -prince-pdf-form: enable;
+  -prince-pdf-form-field-font-size: auto;
+  height: 0.185in;
+  border: 0;
+  border-bottom: 0.8px solid #111;
+  border-radius: 0;
+  background: transparent;
+  padding: 0 0.018in;
+  font: inherit;
+  font-weight: 400;
+}
+input[type='radio'],
+input[type='checkbox'] {
+  -prince-pdf-form: enable;
+  width: 0.115in;
+  height: 0.115in;
+  margin: 0 0.025in 0 0;
+  vertical-align: -0.014in;
+  accent-color: #111;
+}
+.middle {
+  max-width: 0.72in;
+}
+.state-input {
+  max-width: 0.48in;
+}
+.dob-field input {
+  max-width: 1.48in;
+}
+.ssn-field input {
+  max-width: 1.15in;
+}
+
+fieldset {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+legend {
+  padding: 0;
+  font-weight: 700;
+}
+.inline-radio {
+  display: flex;
+  align-items: baseline;
+  gap: 0.085in;
+}
+.inline-radio legend {
+  float: left;
+  margin-right: 0.07in;
+}
+.inline-radio label {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.enrollment-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 0.13in;
+  margin: 0.015in 0 0.07in;
+}
+.enrollment-choice {
+  white-space: nowrap;
+}
+.attendance input {
+  min-width: 1.08in;
+}
+
+.records {
+  border-top: 1.35px solid #111;
+  border-bottom: 1px solid #111;
+  padding: 0.065in 0 0.085in;
+}
+.record-fieldset legend {
+  font-size: 9.5pt;
+  margin-bottom: 0.055in;
+}
+.radio-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 1.35fr 1.65fr;
+  gap: 0.055in 0.18in;
+  align-items: center;
+}
+.radio-grid label {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.radio-grid label:last-child {
+  grid-column: 1;
+}
+.copies-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.58in;
+  margin-top: 0.1in;
+}
+.copies {
+  max-width: 0.38in;
+  flex: 0 0 0.38in !important;
+}
+
+.recipients {
+  padding-top: 0.065in;
+}
+.recipients-heading-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.045in;
+  margin-bottom: 0.055in;
+}
+.recipients-heading-line h2 {
+  text-align: left;
+  font-size: 9.8pt;
+}
+.recipients-heading-line span {
+  font-weight: 700;
+  font-size: 8.9pt;
+}
+.recipient {
+  position: relative;
+  padding-left: 0.33in;
+  margin-bottom: 0.045in;
+}
+.recipient legend {
+  position: absolute;
+  left: 0.04in;
+  top: 0.01in;
+  font-size: 9.2pt;
+}
+.recipient-row {
+  display: grid;
+  align-items: end;
+  margin-bottom: 0.038in;
+}
+.name-recipient {
+  grid-template-columns: 1fr;
+}
+.address-recipient {
+  grid-template-columns: 2.05fr 0.9fr;
+  gap: 0.34in;
+}
+.state-recipient {
+  grid-template-columns: 1.15in 1.75in;
+  gap: 0.45in;
+}
+.zip-recipient input {
+  max-width: 1in;
+}
+
+.authorization {
+  margin-top: 0.055in;
+}
+.authorization-text {
+  margin: 0 0 0.055in 0.52in;
+  font-size: 9pt;
+  line-height: 1.25;
+}
+.signature-row {
+  display: grid;
+  grid-template-columns: 1.45fr 0.65fr;
+  gap: 1.05in;
+  margin: 0 0.22in 0.055in 0.52in;
+}
+.date-signature input {
+  max-width: 1.15in;
+}
+
+.mailing-block {
+  border-top: 1.35px solid #111;
+  border-bottom: 1.35px solid #111;
+  padding: 0.055in 0 0.06in;
+  text-align: center;
+  font-size: 9.15pt;
+  line-height: 1.25;
+}
+
+.office-use {
+  padding-top: 0.045in;
+}
+.office-use h2 {
+  text-align: center;
+  font-size: 10.2pt;
+  margin-bottom: 0.065in;
+}
+.office-row {
+  display: grid;
+  align-items: end;
+  margin-bottom: 0.048in;
+}
+.payment-row {
+  grid-template-columns: 0.75fr 2.35fr;
+  gap: 0.22in;
+}
+.amount input {
+  max-width: 0.55in;
+}
+.payment-methods {
+  justify-content: space-between;
+}
+.payment-methods label {
+  font-weight: 700;
+}
+.office-two {
+  grid-template-columns: 1.03fr 1.1fr;
+  gap: 0.7in;
+}
+.date-office input {
+  max-width: 1.15in;
+}
+.received-by input {
+  min-width: 1.55in;
+}
+.outstanding {
+  justify-self: start;
+}
+.final-row {
+  grid-template-columns: 2.2fr 1fr;
+  gap: 0.35in;
+}
+
+.comments-row {
+  grid-template-columns: 1fr;
+}
+
+.comments input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.final-date input {
+  max-width: 0.95in;
+}
+.sent-by input,
+.comments input {
+  min-width: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+/* ==========================================================
+   V3 — LOOSER VERTICAL RHYTHM
+   Fill more of the Letter page without changing structure.
+   ========================================================== */
+
+html {
+  font-size: 9.65pt;
+}
+
+body {
+  line-height: 1.12;
+}
+
+/* Header */
+.doc-header {
+  margin-bottom: 0.105in;
+}
+
+.logo {
+  margin-bottom: 0.025in;
+}
+
+h1 {
+  margin-bottom: 0.045in;
+}
+
+.verification-note {
+  margin-bottom: 0.125in;
+  line-height: 1.25;
+}
+
+.fee-note {
+  margin-bottom: 0.115in;
+}
+
+/* General identifying-information rows */
+.row {
+  margin-bottom: 0.075in;
+}
+
+input[type='text'],
+input[type='prince-pdf-signature'] {
+  height: 0.205in;
+}
+
+/* Enrollment */
+.enrollment-row {
+  margin-top: 0.025in;
+  margin-bottom: 0.095in;
+}
+
+/* Record-request section */
+.records {
+  padding-top: 0.085in;
+  padding-bottom: 0.11in;
+}
+
+.record-fieldset legend {
+  margin-bottom: 0.07in;
+}
+
+.radio-grid {
+  row-gap: 0.07in;
+}
+
+.copies-row {
+  margin-top: 0.125in;
+}
+
+/* Recipient section */
+.recipients {
+  padding-top: 0.09in;
+}
+
+.recipients-heading-line {
+  margin-bottom: 0.075in;
+}
+
+.recipient {
+  margin-bottom: 0.065in;
+}
+
+.recipient-row {
+  margin-bottom: 0.055in;
+}
+
+/* Authorization */
+.authorization {
+  margin-top: 0.075in;
+}
+
+.authorization-text {
+  margin-bottom: 0.075in;
+  line-height: 1.3;
+}
+
+.signature-row {
+  margin-bottom: 0.075in;
+}
+
+/* Mailing information */
+.mailing-block {
+  padding-top: 0.08in;
+  padding-bottom: 0.085in;
+  line-height: 1.32;
+}
+
+/* Office use */
+.office-use {
+  padding-top: 0.065in;
+}
+
+.office-use h2 {
+  margin-bottom: 0.085in;
+}
+
+.office-row {
+  margin-bottom: 0.065in;
+}
+
+/* ==========================================================
+   V4 — FINAL PAGE-FILL ADJUSTMENT
+   ========================================================== */
+
+html {
+  font-size: 9.85pt;
+}
+
+.verification-note {
+  margin-bottom: 0.145in;
+}
+
+.fee-note {
+  margin-bottom: 0.13in;
+}
+
+.row {
+  margin-bottom: 0.09in;
+}
+
+input[type='text'],
+input[type='prince-pdf-signature'] {
+  height: 0.215in;
+}
+
+.enrollment-row {
+  margin-top: 0.035in;
+  margin-bottom: 0.11in;
+}
+
+.records {
+  padding-top: 0.095in;
+  padding-bottom: 0.125in;
+}
+
+.record-fieldset legend {
+  margin-bottom: 0.08in;
+}
+
+.radio-grid {
+  row-gap: 0.08in;
+}
+
+.copies-row {
+  margin-top: 0.14in;
+}
+
+.recipients {
+  padding-top: 0.105in;
+}
+
+.recipients-heading-line {
+  margin-bottom: 0.085in;
+}
+
+.recipient {
+  margin-bottom: 0.08in;
+}
+
+.recipient-row {
+  margin-bottom: 0.065in;
+}
+
+.authorization {
+  margin-top: 0.09in;
+}
+
+.authorization-text {
+  margin-bottom: 0.085in;
+}
+
+.signature-row {
+  margin-bottom: 0.09in;
+}
+
+.mailing-block {
+  padding-top: 0.095in;
+  padding-bottom: 0.1in;
+}
+
+.office-use {
+  padding-top: 0.08in;
+}
+
+.office-use h2 {
+  margin-bottom: 0.095in;
+}
+
+.office-row {
+  margin-bottom: 0.075in;
+}
+/* ==========================================================
+   DATE FIELDS
+   ========================================================== */
+
+.inline-date {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.045in;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.inline-date legend {
+  float: left;
+  margin: 0 0.045in 0 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.inline-date input[type='text'] {
+  flex: 0 0 auto;
+  min-width: 0;
+  text-align: center;
+}
+
+.date-month,
+.date-day {
+  width: 0.34in;
+}
+
+.date-year {
+  width: 0.55in;
+}
+
+.date-slash {
+  font-weight: 400;
+  padding-bottom: 0.025in;
+}
+/* ==========================================================
+   V5B — MICRO-COMPRESSION
+   Recover only enough height for the Comments row.
+   ========================================================== */
+
+/* Keep the larger V4 text size */
+html {
+  font-size: 9.85pt;
+}
+
+/* Keep fields nearly as tall as V4 */
+input[type='text'],
+input[type='prince-pdf-signature'] {
+  height: 0.21in;
+}
+
+/* Tiny reductions spread across the page */
+.verification-note {
+  margin-bottom: 0.135in;
+}
+
+.fee-note {
+  margin-bottom: 0.12in;
+}
+
+.row {
+  margin-bottom: 0.082in;
+}
+
+.enrollment-row {
+  margin-top: 0.03in;
+  margin-bottom: 0.1in;
+}
+
+.records {
+  padding-top: 0.09in;
+  padding-bottom: 0.115in;
+}
+
+.record-fieldset legend {
+  margin-bottom: 0.07in;
+}
+
+.radio-grid {
+  row-gap: 0.07in;
+}
+
+.copies-row {
+  margin-top: 0.13in;
+}
+
+.recipients {
+  padding-top: 0.095in;
+}
+
+.recipients-heading-line {
+  margin-bottom: 0.075in;
+}
+
+.recipient {
+  margin-bottom: 0.07in;
+}
+
+.recipient-row {
+  margin-bottom: 0.055in;
+}
+
+.authorization {
+  margin-top: 0.08in;
+}
+
+.authorization-text {
+  margin-bottom: 0.075in;
+}
+
+.signature-row {
+  margin-bottom: 0.08in;
+}
+
+.mailing-block {
+  padding-top: 0.085in;
+  padding-bottom: 0.09in;
+}
+
+.office-use {
+  padding-top: 0.07in;
+}
+
+.office-use h2 {
+  margin-bottom: 0.085in;
+}
+
+.office-row {
+  margin-bottom: 0.065in;
+}
+
+/* Comments gets its own row, but doesn't need extra vertical margin */
+.comments-row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
