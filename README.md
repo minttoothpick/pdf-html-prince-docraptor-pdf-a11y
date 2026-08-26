@@ -4,6 +4,10 @@ Generates accessible, fillable transcript request PDFs for Orange Technical Coll
 
 Campus-specific names and mailing addresses are inserted automatically by `build_docraptor.py`.
 
+## Gettin it started
+
+`source .venv/bin/activate`
+
 ## Files
 
 - `transcript-form.html` — shared form markup
