@@ -16,10 +16,11 @@ from pathlib import Path
 # ============================================================
 
 HERE = Path(__file__).resolve().parent
+REPO_ROOT = HERE.parent.parent
 
 HTML_FILE = HERE / "transcript-form.html"
 CSS_FILE = HERE / "transcript-form.css"
-LOGO_FILE = HERE / "assets" / "otc-career-logo.png"
+LOGO_FILE = REPO_ROOT / "assets" / "otc-career-logo.png"
 
 
 # ============================================================
@@ -189,7 +190,7 @@ logo_base64 = base64.b64encode(logo_bytes).decode("ascii")
 logo_uri = f"data:image/png;base64,{logo_base64}"
 
 html, logo_replacements = re.subn(
-    r'src=["\']assets/otc-career-logo\.png["\']',
+    r'src=["\']\.\./\.\./assets/otc-career-logo\.png["\']',
     f'src="{logo_uri}"',
     html,
     count=1,
@@ -198,7 +199,7 @@ html, logo_replacements = re.subn(
 
 if logo_replacements != 1:
     sys.exit(
-        "Could not find assets/otc-career-logo.png "
+        "Could not find ../../assets/otc-career-logo.png "
         "in transcript-form.html."
     )
 
