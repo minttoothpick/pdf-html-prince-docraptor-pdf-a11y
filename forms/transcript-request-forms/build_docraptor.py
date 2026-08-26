@@ -8,6 +8,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from dotenv import load_dotenv
 from pathlib import Path
 
 
@@ -17,6 +18,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent.parent
+
+load_dotenv(REPO_ROOT / ".env")
 
 HTML_FILE = HERE / "transcript-form.html"
 CSS_FILE = HERE / "transcript-form.css"
