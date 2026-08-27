@@ -3,422 +3,72 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Orange Technical College - {{CAMPUS_NAME}} Transcript Request Form</title>
-  <meta name="author" content="Orange Technical College">
-  <meta name="subject" content="Student Transcripts and Records Release Authorization">
-  <link rel="stylesheet" href="transcript-form.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Technical College - GED Consent for Release of Confidential Information</title>
+  <link rel="stylesheet" href="ged-consent-form.css">
 </head>
 
 <body>
-  <main>
-    <header class="doc-header">
-      <img class="logo" src="../../assets/otc-career-logo.png" alt="Orange Technical College Career logo">
+  <main class="ged-form-page">
+    <form class="ged-consent-form" aria-labelledby="form-title">
 
-      <h1>Student Transcripts/Records Release Authorization</h1>
+      <header class="form-header">
+        <img class="otc-logo" src="../../assets/otc-career-logo.png" alt="Orange Technical College Career logo">
 
-      <p class="verification-note">
-        <em>For verification purposes, please provide a copy of your driver’s license, state ID, or other form of identification showing your name and date of birth.</em>
-      </p>
-    </header>
+        <h1>Career &amp; Technical Education</h1>
+        <h2 id="form-title">Consent for Release of Confidential Information</h2>
+      </header>
 
-    <form id="transcript-request" aria-label="Student transcript and records release authorization">
-
-      <section class="identifying" aria-labelledby="identifying-heading">
-
-        <h2 id="identifying-heading">Identifying Information</h2>
-
-        <p class="fee-note">Transcript copies are $5.00 each.</p>
-
-        <div class="row names-row">
-          <label class="inline-field">
-            Last Name:
-            <input type="text" name="last_name" id="last_name" title="Last Name" autocomplete="family-name">
-          </label>
-
-          <label class="inline-field">
-            First Name:
-            <input type="text" name="first_name" id="first_name" title="First Name" autocomplete="given-name">
-          </label>
-
-          <label class="inline-field">
-            Middle Initial:
-            <input class="middle" type="text" name="middle_initial" id="middle_initial" title="Middle Initial" maxlength="1">
-          </label>
-        </div>
-
-        <div class="row one-row">
-          <label class="inline-field">
-            Previous Name (if applicable):
-            <input type="text" name="previous_name" id="previous_name" title="Previous Name, if applicable">
-          </label>
-        </div>
-
-        <div class="row student-dob-row">
-          <label class="inline-field">
-            Student ID #:
-            <input type="text" name="student_id" id="student_id" title="Student ID">
-          </label>
-
-          <fieldset class="inline-date dob-field">
-            <legend>Date of Birth:</legend>
-
-            <input class="date-month" type="text" name="date_of_birth_month" id="date_of_birth_month" title="Date of Birth Month" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-day" type="text" name="date_of_birth_day" id="date_of_birth_day" title="Date of Birth Day" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-year" type="text" name="date_of_birth_year" id="date_of_birth_year" title="Date of Birth Year" inputmode="numeric" maxlength="4">
-          </fieldset>
-        </div>
-
-        <div class="row ssn-phone-row">
-          <label class="inline-field ssn-field">
-            Last 4 digits of SSN:
-            <input type="text" name="ssn_last4" id="ssn_last4" title="Last 4 digits of Social Security Number" inputmode="numeric" maxlength="4" pattern="[0-9]{4}">
-          </label>
-
-          <label class="inline-field">
-            Phone Number:
-            <input type="text" name="phone" id="phone" title="Phone Number" autocomplete="tel">
-          </label>
-        </div>
-
-        <div class="row address-row">
-          <label class="inline-field address-main">
-            Address:
-            <input type="text" name="address" id="address" title="Street Address" autocomplete="street-address">
-          </label>
-
-          <label class="inline-field">
-            City:
-            <input type="text" name="city" id="city" title="City" autocomplete="address-level2">
-          </label>
-
-          <label class="inline-field">
-            State:
-            <input class="state-input" type="text" name="state" id="state" title="State" autocomplete="address-level1" maxlength="2">
-          </label>
-
-          <label class="inline-field">
-            ZIP Code:
-            <input type="text" name="zip" id="zip" title="ZIP Code" autocomplete="postal-code">
-          </label>
-        </div>
-
-        <div class="row one-row program-row">
-          <label class="inline-field">
-            Program/Class:
-            <input type="text" name="program_class" id="program_class" title="Program or Class">
-          </label>
-        </div>
-
-        <div class="enrollment-row">
-          <fieldset class="inline-radio enrollment-choice">
-            <legend>Are you currently enrolled at OTC?</legend>
-
-            <label>
-              <input type="radio" name="currently_enrolled" value="yes" title="Currently enrolled at OTC: Yes">
-              Yes
-            </label>
-
-            <label>
-              <input type="radio" name="currently_enrolled" value="no" title="Currently enrolled at OTC: No">
-              No
-            </label>
-          </fieldset>
-
-          <label class="inline-field attendance">
-            If not, approximate dates (years) of attendance:
-            <input type="text" name="attendance_years" id="attendance_years" title="Approximate dates or years of attendance">
-          </label>
-        </div>
-      </section>
-
-      <section class="records" aria-labelledby="record-heading">
-
-        <fieldset class="record-fieldset">
-          <legend id="record-heading">
-            <strong>Record Requested</strong> – please select one:
-          </legend>
-
-          <div class="radio-grid">
-            <label>
-              <input type="radio" name="record_requested" value="official_transcript" title="Record requested: Official Transcript">
-              Official Transcript
-            </label>
-
-            <label>
-              <input type="radio" name="record_requested" value="certificate_of_completion" title="Record requested: Certificate of Completion">
-              Certificate of Completion
-            </label>
-
-            <label>
-              <input type="radio" name="record_requested" value="enrollment_verification" title="Record requested: Enrollment Verification Letter">
-              Enrollment Verification Letter
-            </label>
-
-            <label>
-              <input type="radio" name="record_requested" value="casas_scores" title="Record requested: CASAS Scores">
-              CASAS Scores
-            </label>
-          </div>
-        </fieldset>
-
-        <div class="copies-row">
-          <label class="inline-field">
-            Number of copies to be MAILED:
-            <input class="copies" type="text" name="copies_mailed" id="copies_mailed" title="Number of copies to be mailed" inputmode="numeric">
-          </label>
-
-          <label class="inline-field">
-            Number of copies to be PICKED UP:
-            <input class="copies" type="text" name="copies_picked_up" id="copies_picked_up" title="Number of copies to be picked up" inputmode="numeric">
-          </label>
-        </div>
-      </section>
-
-      <section class="recipients" aria-labelledby="recipients-heading">
-
-        <div class="recipients-heading-line">
-          <h2 id="recipients-heading">Address to Send Records To</h2>
-          <span>(student is responsible for providing the correct address)</span>
-        </div>
-
-        <fieldset class="recipient">
-          <legend>
-            <span aria-hidden="true">1.</span>
-            <span class="visually-hidden">Recipient 1</span>
-          </legend>
-
-          <div class="recipient-row name-recipient">
-            <label class="inline-field">
-              Name:
-              <input type="text" name="recipient_1_name" title="Recipient 1 Name">
-            </label>
-          </div>
-
-          <div class="recipient-row address-recipient">
-            <label class="inline-field">
-              Address:
-              <input type="text" name="recipient_1_address" title="Recipient 1 Street Address">
-            </label>
-
-            <label class="inline-field">
-              City:
-              <input type="text" name="recipient_1_city" title="Recipient 1 City">
-            </label>
-          </div>
-
-          <div class="recipient-row state-recipient">
-            <label class="inline-field">
-              State:
-              <input class="state-input" type="text" name="recipient_1_state" title="Recipient 1 State" maxlength="2">
-            </label>
-
-            <label class="inline-field zip-recipient">
-              ZIP Code:
-              <input type="text" name="recipient_1_zip" title="Recipient 1 ZIP Code">
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset class="recipient">
-          <legend>
-            <span aria-hidden="true">2.</span>
-            <span class="visually-hidden">Recipient 2</span>
-          </legend>
-
-          <div class="recipient-row name-recipient">
-            <label class="inline-field">
-              Name:
-              <input type="text" name="recipient_2_name" title="Recipient 2 Name">
-            </label>
-          </div>
-
-          <div class="recipient-row address-recipient">
-            <label class="inline-field">
-              Address:
-              <input type="text" name="recipient_2_address" title="Recipient 2 Street Address">
-            </label>
-
-            <label class="inline-field">
-              City:
-              <input type="text" name="recipient_2_city" title="Recipient 2 City">
-            </label>
-          </div>
-
-          <div class="recipient-row state-recipient">
-            <label class="inline-field">
-              State:
-              <input class="state-input" type="text" name="recipient_2_state" title="Recipient 2 State" maxlength="2">
-            </label>
-
-            <label class="inline-field zip-recipient">
-              ZIP Code:
-              <input type="text" name="recipient_2_zip" title="Recipient 2 ZIP Code">
-            </label>
-          </div>
-        </fieldset>
-      </section>
-
-      <section class="authorization" aria-labelledby="authorization-heading">
-
-        <h2 id="authorization-heading" class="visually-hidden">
-          Authorization
-        </h2>
-
-        <p class="authorization-text">
-          <strong>
-            I authorize OTC – {{CAMPUS_NAME}} to release my transcripts/records to the above listed institution(s) or individual(s).
-          </strong>
+      <section class="consent-section" aria-label="Consent statement">
+        <p class="consent-text">
+          I,
+          <span class="inline-field">
+            <label class="sr-only" for="full-legal-name">Full Legal Name</label>
+            <input id="full-legal-name" name="full_legal_name" type="text" autocomplete="name" title="Full Legal Name">
+          </span>,
+          request and authorize Orange County Public Schools to release certain confidential information from my file pertaining to the GED® scores. Those records will not be released to any individual, college or organization without the express written permission of the examinee. I understand that some of my records may be protected under the Family Educational Rights and Privacy Act of 1974 (FERPA) and cannot be released without my written consent. I hereby waive all provisions of law and privilege relating to the records described in this disclosure. In order to research data from the tests and to help our GED® programs, Orange County Public Schools is seeking permission to report scores with Orange County. The data would be shared with guidance counselors and teachers. No information will be released to any entity outside of Orange County Public Schools.
         </p>
-
-        <div class="signature-row">
-          <label class="inline-field">
-            Student Signature:
-            <input type="prince-pdf-signature" name="student_signature" id="student_signature" title="Student Signature">
-          </label>
-
-          <fieldset class="inline-date date-signature">
-            <legend>Date:</legend>
-
-            <input class="date-month" type="text" name="signature_date_month" title="Signature Date Month" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-day" type="text" name="signature_date_day" title="Signature Date Day" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-year" type="text" name="signature_date_year" title="Signature Date Year" inputmode="numeric" maxlength="4">
-          </fieldset>
-        </div>
       </section>
 
-      <aside class="mailing-block" aria-label="Mailing instructions">
-        <strong>Mail form and payment to: Orange Technical College – {{CAMPUS_NAME}}</strong><br>
-        <strong>Attn: {{ATTN}}</strong><br>
-        <strong>{{STREET}}</strong><br>
-        <strong>{{CITY_STATE_ZIP}}</strong>
-      </aside>
+      <section class="identification-section" aria-label="Examinee information">
 
-      <section class="office-use" aria-labelledby="office-heading">
-
-        <h2 id="office-heading">Office Use Only</h2>
-
-        <div class="office-row payment-row">
-          <label class="inline-field amount">
-            Amount:
-            <input type="text" name="office_amount" title="Office Use: Amount">
-          </label>
-
-          <fieldset class="payment-methods inline-radio">
-            <legend class="visually-hidden">Payment Method</legend>
-
-            <label>
-              <input type="checkbox" name="payment_visa" value="yes" title="Payment Method: Visa">
-              Visa
-            </label>
-
-            <label>
-              <input type="checkbox" name="payment_mastercard" value="yes" title="Payment Method: Mastercard">
-              Mastercard
-            </label>
-
-            <label>
-              <input type="checkbox" name="payment_cash" value="yes" title="Payment Method: Cash">
-              Cash
-            </label>
-
-            <label>
-              <input type="checkbox" name="payment_check" value="yes" title="Payment Method: Check">
-              Check
-            </label>
-          </fieldset>
+        <div class="line-field">
+          <label for="examinee-signature">Examinee Signature:</label>
+          <input id="examinee-signature" name="examinee_signature" type="text" title="Examinee Signature">
         </div>
 
-        <div class="office-row office-two">
-          <fieldset class="inline-date date-office">
-            <legend>Date Received:</legend>
-
-            <input class="date-month" type="text" name="date_received_month" title="Office Use: Date Received Month" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-day" type="text" name="date_received_day" title="Office Use: Date Received Day" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-year" type="text" name="date_received_year" title="Office Use: Date Received Year" inputmode="numeric" maxlength="4">
-          </fieldset>
-
-          <label class="inline-field received-by">
-            Received by:
-            <input type="text" name="received_by" title="Office Use: Received by">
-          </label>
+        <div class="line-field">
+          <label for="student-id">Student ID:</label>
+          <input id="student-id" name="student_id" type="text" title="Student ID">
         </div>
 
-        <div class="office-row office-two">
-          <fieldset class="inline-date date-office">
-            <legend>Date Sent:</legend>
-
-            <input class="date-month" type="text" name="date_sent_month" title="Office Use: Date Sent Month" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-day" type="text" name="date_sent_day" title="Office Use: Date Sent Day" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-year" type="text" name="date_sent_year" title="Office Use: Date Sent Year" inputmode="numeric" maxlength="4">
-          </fieldset>
-
-          <fieldset class="outstanding inline-radio">
-            <legend>Outstanding Fees:</legend>
-
-            <label>
-              <input type="radio" name="outstanding_fees" value="yes" title="Outstanding Fees: Yes">
-              Yes
-            </label>
-
-            <label>
-              <input type="radio" name="outstanding_fees" value="no" title="Outstanding Fees: No">
-              No
-            </label>
-          </fieldset>
-        </div>
-
-        <div class="office-row final-row">
-          <fieldset class="inline-date date-office final-date">
-            <legend>Date Records Mailed/Picked Up:</legend>
-
-            <input class="date-month" type="text" name="records_completed_month" title="Office Use: Date Records Mailed or Picked Up Month" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-day" type="text" name="records_completed_day" title="Office Use: Date Records Mailed or Picked Up Day" inputmode="numeric" maxlength="2">
-
-            <span class="date-slash" aria-hidden="true">/</span>
-
-            <input class="date-year" type="text" name="records_completed_year" title="Office Use: Date Records Mailed or Picked Up Year" inputmode="numeric" maxlength="4">
-          </fieldset>
-
-          <label class="inline-field sent-by">
-            Sent by:
-            <input type="text" name="sent_by" title="Office Use: Sent by">
-          </label>
-        </div>
-
-        <div class="office-row comments-row">
-          <label class="inline-field comments">
-            Comments:
-            <input type="text" name="comments" title="Office Use: Comments">
-          </label>
-        </div>
       </section>
+
+      <fieldset class="scores-fieldset">
+        <legend>Scores:</legend>
+
+        <div class="score-option">
+          <input id="score-rla" name="score_reasoning_language_arts" type="checkbox" value="reasoning-through-language-arts" title="Reasoning Through Language Arts">
+          <label for="score-rla">Reasoning Through Language Arts</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-math" name="score_math_reasoning" type="checkbox" value="math-reasoning" title="Math Reasoning">
+          <label for="score-math">Math Reasoning</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-science" name="score_science" type="checkbox" value="science" title="Science">
+          <label for="score-science">Science</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-social-studies" name="score_social_studies" type="checkbox" value="social-studies" title="Social Studies">
+          <label for="score-social-studies">Social Studies</label>
+        </div>
+
+      </fieldset>
+
     </form>
   </main>
 </body>
