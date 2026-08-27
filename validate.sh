@@ -4,6 +4,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+PDF_DIR="forms/transcript-request-forms/pdf_production"
+
 validate_pdf() {
   local PDF="$1"
 
@@ -24,7 +26,14 @@ validate_pdf() {
 if [[ $# -gt 0 ]]; then
   validate_pdf "$1"
 else
-  for PDF in pdf_production/*.pdf; do
+  PDFs=("$PDF_DIR"/*.pdf)
+
+  if [[ ! -e "${PDFs[1]}" ]]; then
+    echo "No production PDFs found in $PDF_DIR"
+    exit 1
+  fi
+
+  for PDF in "${PDFs[@]}"; do
     validate_pdf "$PDF"
   done
 fi
