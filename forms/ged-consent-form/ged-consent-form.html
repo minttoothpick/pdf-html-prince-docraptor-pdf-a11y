@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Technical College - GED Consent for Release of Confidential Information</title>
+  <link rel="stylesheet" href="ged-consent-form.css">
+</head>
+
+<body>
+  <main class="ged-form-page">
+    <form class="ged-consent-form" aria-labelledby="form-title">
+
+      <header class="form-header">
+        <img class="otc-logo" src="../../assets/otc-career-logo.png" alt="Orange Technical College Career logo">
+
+        <h1>Career &amp; Technical Education</h1>
+        <h2 id="form-title">Consent for Release of Confidential Information</h2>
+      </header>
+
+      <section class="consent-section" aria-label="Consent statement">
+        <p class="consent-text">
+          I,
+          <span class="inline-field">
+            <label class="sr-only" for="full-legal-name">Full Legal Name</label>
+            <input id="full-legal-name" name="full_legal_name" type="text" autocomplete="name" data-pdf-alt="Full Legal Name">
+          </span>,
+          request and authorize Orange County Public Schools to release certain confidential information from my file pertaining to the GED® scores. Those records will not be released to any individual, college or organization without the express written permission of the examinee. I understand that some of my records may be protected under the Family Educational Rights and Privacy Act of 1974 (FERPA) and cannot be released without my written consent. I hereby waive all provisions of law and privilege relating to the records described in this disclosure. In order to research data from the tests and to help our GED® programs, Orange County Public Schools is seeking permission to report scores with Orange County. The data would be shared with guidance counselors and teachers. No information will be released to any entity outside of Orange County Public Schools.
+        </p>
+      </section>
+
+      <section class="identification-section" aria-label="Examinee information">
+
+        <div class="line-field">
+          <label for="examinee-signature">Examinee Signature:</label>
+          <input id="examinee-signature" name="examinee_signature" type="text" data-pdf-alt="Examinee Signature">
+        </div>
+
+        <div class="line-field">
+          <label for="student-id">Student ID:</label>
+          <input id="student-id" name="student_id" type="text" data-pdf-alt="Student ID">
+        </div>
+
+      </section>
+
+      <fieldset class="scores-fieldset">
+        <legend>Scores:</legend>
+
+        <div class="score-option">
+          <input id="score-rla" name="score_reasoning_language_arts" type="checkbox" value="reasoning-through-language-arts" data-pdf-alt="Reasoning Through Language Arts">
+          <label for="score-rla">Reasoning Through Language Arts</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-math" name="score_math_reasoning" type="checkbox" value="math-reasoning" data-pdf-alt="Math Reasoning">
+          <label for="score-math">Math Reasoning</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-science" name="score_science" type="checkbox" value="science" data-pdf-alt="Science">
+          <label for="score-science">Science</label>
+        </div>
+
+        <div class="score-option">
+          <input id="score-social-studies" name="score_social_studies" type="checkbox" value="social-studies" data-pdf-alt="Social Studies">
+          <label for="score-social-studies">Social Studies</label>
+        </div>
+
+      </fieldset>
+
+    </form>
+  </main>
+</body>
+
+</html>
