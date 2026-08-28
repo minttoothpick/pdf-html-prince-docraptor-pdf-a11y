@@ -1,0 +1,265 @@
+@page {
+  size: Letter;
+  margin: 0.28in 0.45in 0.3in;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  color: #111;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+}
+
+.ssn-form-page,
+.ssn-form {
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.otc-logo {
+  display: block;
+  width: 3.45in;
+  height: auto;
+  margin: 0 auto 0.16in;
+}
+
+.form-header h1 {
+  margin: 0.16in 0 0;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21pt;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.campus-fieldset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.campus-fieldset legend {
+  float: left;
+  margin-right: 0.08in;
+  padding: 0;
+  font-size: 10.5pt;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.campus-options {
+  display: flex;
+  align-items: center;
+}
+
+.campus-option {
+  display: flex;
+  align-items: center;
+  margin-right: 0.12in;
+}
+
+.campus-option:last-child {
+  margin-right: 0;
+}
+
+.campus-option input[type='radio'] {
+  width: 0.16in;
+  height: 0.16in;
+  margin: 0 0.04in 0 0;
+}
+
+.campus-option label {
+  font-size: 10pt;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.identity-section {
+  margin-top: 0.25in;
+}
+
+.field-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.field-row--name-date {
+  margin-bottom: 0.16in;
+}
+
+.line-field {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.line-field label,
+.ssn-field > label {
+  flex: 0 0 auto;
+  margin-right: 0.07in;
+  font-size: 10pt;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.line-field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 0.21in;
+  margin: 0;
+  padding: 0 0.03in;
+  border: 0;
+  border-bottom: 0.75pt solid #222;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+}
+
+.line-field--name {
+  flex: 1 1 auto;
+}
+
+.line-field--date {
+  flex: 0 0 1.55in;
+  margin-left: 0.55in;
+}
+
+.ssn-choice-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.18in;
+}
+
+.ssn-field {
+  display: flex;
+  align-items: center;
+  flex: 0 0 4.15in;
+  margin-right: 0.16in;
+}
+
+.ssn-field > label {
+  margin-bottom: 0;
+}
+
+.ssn-field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 0.28in;
+  padding: 0.02in 0.08in;
+  border: 0.8pt solid #222;
+  background: #fff;
+  font: inherit;
+  letter-spacing: 0.19in;
+}
+
+.no-ssn-fieldset {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.no-ssn-fieldset legend {
+  margin: 0 0 0.04in;
+  padding: 0;
+  font-size: 9.5pt;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.no-ssn-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.no-ssn-option {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 0.04in;
+}
+
+.no-ssn-option--wide {
+  width: 100%;
+}
+
+.no-ssn-option input[type='radio'] {
+  width: 0.16in;
+  height: 0.16in;
+  margin: 0 0.06in 0 0;
+}
+
+.no-ssn-option label {
+  font-size: 9.5pt;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.line-field--signature {
+  width: 55%;
+}
+
+.information-section {
+  margin-top: 0.18in;
+}
+
+.information-section h2 {
+  margin: 0.16in 0 0.06in;
+  font-size: 11.2pt;
+  line-height: 1.16;
+  font-weight: 700;
+}
+
+.information-section p {
+  margin: 0 0 0.11in;
+  font-size: 9.7pt;
+  line-height: 1.24;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.07in;
+  font-size: 9pt;
+  line-height: 1.1;
+}
+
+/* Generate real interactive AcroForm controls in Prince/DocRaptor. */
+.ssn-form input {
+  -prince-pdf-form: enable;
+}
+
+/* Accessible descriptions for generated PDF form fields. */
+.ssn-form input[data-pdf-alt] {
+  -prince-alt-text: attr(data-pdf-alt);
+}
+
+@media screen {
+  body {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.28in 0.45in 0.3in;
+  }
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+}

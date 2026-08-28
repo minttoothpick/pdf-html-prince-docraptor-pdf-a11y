@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Technical College - Social Security Number Form</title>
+  <link rel="stylesheet" href="social-security-form.css">
+</head>
+
+<body>
+  <main class="ssn-form-page">
+    <form class="ssn-form" aria-labelledby="form-title">
+
+      <header class="form-header">
+        <img class="otc-logo" src="../../assets/otc-career-logo.png" alt="Orange Technical College Career logo">
+
+        <fieldset class="campus-fieldset">
+          <legend>Campus:</legend>
+
+          <div class="campus-options">
+            <div class="campus-option">
+              <input id="campus-main" name="campus" type="radio" value="main" data-pdf-alt="Campus: Main">
+              <label for="campus-main">Main</label>
+            </div>
+
+            <div class="campus-option">
+              <input id="campus-east" name="campus" type="radio" value="east" data-pdf-alt="Campus: East">
+              <label for="campus-east">East</label>
+            </div>
+
+            <div class="campus-option">
+              <input id="campus-south" name="campus" type="radio" value="south" data-pdf-alt="Campus: South">
+              <label for="campus-south">South</label>
+            </div>
+
+            <div class="campus-option">
+              <input id="campus-west" name="campus" type="radio" value="west" data-pdf-alt="Campus: West">
+              <label for="campus-west">West</label>
+            </div>
+
+            <div class="campus-option">
+              <input id="campus-vc" name="campus" type="radio" value="vc" data-pdf-alt="Campus: VC">
+              <label for="campus-vc">VC</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <h1 id="form-title">Orange Technical College SSN Form</h1>
+      </header>
+
+      <section class="identity-section" aria-label="Student information">
+
+        <div class="field-row field-row--name-date">
+          <div class="line-field line-field--name">
+            <label for="student-name">Student Name:</label>
+            <input id="student-name" name="student_name" type="text" autocomplete="name" data-pdf-alt="Student Name">
+          </div>
+
+          <div class="line-field line-field--date">
+            <label for="date">Date:</label>
+            <input id="date" name="date" type="text" data-pdf-alt="Date">
+          </div>
+        </div>
+
+        <div class="ssn-choice-row">
+          <div class="ssn-field">
+            <label for="social-security-number">Social Sec. No.:</label>
+            <input id="social-security-number" name="social_security_number" type="text" inputmode="numeric" maxlength="9" autocomplete="off" data-pdf-alt="Social Security Number">
+          </div>
+
+          <fieldset class="no-ssn-fieldset">
+            <legend>If SSN is left blank, please check one of the options below:</legend>
+
+            <div class="no-ssn-options">
+              <div class="no-ssn-option">
+                <input id="no-ssn" name="ssn_blank_reason" type="radio" value="do-not-have" data-pdf-alt="SSN left blank: Do not have SSN">
+                <label for="no-ssn">Do not have SSN</label>
+              </div>
+
+              <div class="no-ssn-option">
+                <input id="applied-ssn" name="ssn_blank_reason" type="radio" value="applied" data-pdf-alt="SSN left blank: Applied for SSN">
+                <label for="applied-ssn">Applied for SSN</label>
+              </div>
+
+              <div class="no-ssn-option no-ssn-option--wide">
+                <input id="decline-ssn" name="ssn_blank_reason" type="radio" value="decline" data-pdf-alt="SSN left blank: Do not wish to provide my SSN">
+                <label for="decline-ssn">Do not wish to provide my SSN</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="line-field line-field--signature">
+          <label for="signature">Signature:</label>
+          <input id="signature" name="signature" type="text" data-pdf-alt="Signature">
+        </div>
+
+      </section>
+
+      <section class="information-section" aria-labelledby="why-heading">
+        <h2 id="why-heading">Why We Need Your Social Security Number?</h2>
+
+        <p>
+          We have a legitimate business need to get Social Security information for individuals who request admission to Orange Technical College. This information helps us manage identity records for matching documentation and reducing the incidence of duplicated records.
+        </p>
+
+        <p>
+          Disclosure of your Social Security number (SSN) is requested for the Student Records system and for compliance with federal and state reporting requirements. Federal law requires that you provide your SSN if you're applying for financial aid.
+        </p>
+
+        <p>
+          Also, to comply with the Tax Payer Relief Act of 1997, we must obtain your correct SSN to file returns with the IRS and to furnish a statement to you. The returns that we file must contain information about qualified tuition and related expenses. The Privacy Act of 1974, section 6109 of the Internal Revenue Code, requires that you give your correct SSN to agencies that must file information returns with the IRS. The IRS uses your SSN for identification and to verify the accuracy of your tax return. For more information, please refer to Internal Revenue Code section 6050s.
+        </p>
+
+        <h2>How We Use Your Social Security Number</h2>
+
+        <p>
+          You must provide your SSN upon submitting your student application. We will only ask for your SSN during the admissions process to ensure we create a unique record for you in our student information system. Providing a valid SSN is the best way to be sure your records are properly maintained. Your SSN will never be used as your student ID number.
+        </p>
+
+        <p>
+          When you enroll, transfer credit, request a transcript, or have any information sent to us from other institutions, the primary means for connecting all these individual bits of information with you is your SSN. Not providing your SSN may take longer to verify what documents belong to you. You also will not be able to claim education tax credits on your tax return.
+        </p>
+
+        <p>
+          Your SSN will be used for mandated business functions, such as tax reporting to federal and state government agencies required to file information regarding assessment of qualified tuition and fees (IRS Form 1098-T) with the IRS, and the IRS requires us to furnish the SSN if available.
+        </p>
+
+        <h2>How We Protect Your Social Security Information</h2>
+
+        <p>
+          The SSN is part of your confidential record. Your SSN will be treated as a confidential piece of information used only to match documents to your account or for financial aid if applicable. Only Orange Technical College staff whose responsibilities require them to have access, such as those who process incoming documents like transcripts will have access to the full SSN.
+        </p>
+      </section>
+
+      <footer class="form-footer">
+        <span>Rev. 8/2026</span>
+        <span>OCPS0691Cte</span>
+      </footer>
+
+    </form>
+  </main>
+</body>
+
+</html>
