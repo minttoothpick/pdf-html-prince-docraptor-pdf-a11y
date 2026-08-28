@@ -1,0 +1,229 @@
+@page {
+  size: Letter;
+  margin: 0.35in 0.7in 0.4in;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  color: #111;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+}
+
+.model-form-page,
+.model-release-form {
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.otc-logo {
+  display: block;
+  width: 3.1in;
+  height: auto;
+  margin: 0 auto 0.24in;
+}
+
+.form-header h1,
+.form-header h2,
+.form-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-header h1 {
+  margin-top: 0;
+  margin-bottom: 0.05in;
+  font-size: 18pt;
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+.header-address {
+  margin: 0 0 0.22in;
+  font-size: 11pt;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.form-header h2 {
+  margin-top: 0;
+  margin-bottom: 0.12in;
+  font-size: 15pt;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.form-subtitle {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12pt;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.consent-section {
+  margin-top: 0.48in;
+}
+
+.consent-text {
+  margin: 0 0 0.22in;
+  font-size: 10.7pt;
+  line-height: 1.42;
+  text-align: left;
+}
+
+.inline-field {
+  display: inline-block;
+  width: 2.7in;
+  vertical-align: baseline;
+}
+
+.inline-field input {
+  width: 100%;
+  height: 0.23in;
+  margin: 0;
+  padding: 0 0.03in;
+  border: 0;
+  border-bottom: 0.75pt solid #222;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.identification-section {
+  margin-top: 0.45in;
+}
+
+.field-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.field-row > .line-field {
+  flex: 1 1 0;
+}
+
+.field-row > .line-field + .line-field {
+  margin-left: 0.18in;
+}
+
+.field-row--signature .line-field:first-child {
+  flex: 1.7 1 0;
+}
+
+.field-row--signature .line-field--date {
+  flex: 0.85 1 0;
+}
+
+.line-field {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 0.18in;
+}
+
+.line-field label {
+  flex: 0 0 auto;
+  margin-right: 0.08in;
+  font-size: 10.9pt;
+  line-height: 1.2;
+}
+
+.line-field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 0.23in;
+  margin: 0;
+  padding: 0 0.03in;
+  border: 0;
+  border-bottom: 0.75pt solid #222;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+}
+
+.address-field {
+  margin-top: 0.02in;
+  margin-bottom: 0.23in;
+}
+
+.address-field .line-field {
+  margin-bottom: 0.04in;
+}
+
+.field-hint {
+  margin: 0 0 0 1.55in;
+  font-size: 9pt;
+  line-height: 1.15;
+  color: #333;
+}
+
+.field-row--bottom {
+  margin-top: 0.05in;
+}
+
+.form-footer {
+  margin-top: 0.72in;
+  font-size: 8.5pt;
+}
+
+.form-footer p {
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 1px solid #111;
+  outline-offset: 1px;
+}
+
+/* Generate real interactive AcroForm controls in Prince/DocRaptor. */
+.model-release-form input {
+  -prince-pdf-form: enable;
+}
+
+/* Accessible descriptions for generated PDF form fields. */
+.model-release-form input[data-pdf-alt] {
+  -prince-alt-text: attr(data-pdf-alt);
+}
+
+@media screen {
+  body {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.35in 0.7in 0.4in;
+  }
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+}
