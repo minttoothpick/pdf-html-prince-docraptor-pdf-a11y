@@ -146,14 +146,23 @@ body {
 }
 
 .ssn-field {
-  display: flex;
-  align-items: center;
   flex: 0 0 4.15in;
   margin-right: 0.16in;
 }
 
-.ssn-field > label {
+.ssn-input-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ssn-input-row > label {
+  flex: 0 0 auto;
+  margin-right: 0.07in;
   margin-bottom: 0;
+  font-size: 10pt;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
 .ssn-field input {
@@ -164,7 +173,13 @@ body {
   border: 0.8pt solid #222;
   background: #fff;
   font: inherit;
-  letter-spacing: 0.19in;
+}
+
+.ssn-field .field-hint {
+  margin: 0.035in 0 0 1.12in;
+  font-size: 8.5pt;
+  line-height: 1.15;
+  color: #333;
 }
 
 .no-ssn-fieldset {
