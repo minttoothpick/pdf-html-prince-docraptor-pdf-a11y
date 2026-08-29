@@ -1,0 +1,464 @@
+:root {
+  --navy: #082a57;
+  --orange: #f58220;
+  --ink: #111;
+  --line: #666;
+}
+
+@page {
+  size: Letter portrait;
+  margin: 0.42in 0.4in 0.5in;
+
+  @bottom-center {
+    content: counter(page);
+    color: #222;
+    font: 10pt Calibri, Arial, Helvetica, sans-serif;
+  }
+}
+
+@page cover {
+  margin: 0;
+
+  @bottom-center { content: none; }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  color: var(--ink);
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.2;
+}
+
+body,
+main {
+  margin: 0;
+  width: 100%;
+}
+
+p {
+  margin: 0 0 0.5em;
+  orphans: 2;
+  widows: 2;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+  line-height: 1.12;
+  margin: 0;
+  page-break-after: avoid;
+}
+
+h1 { -prince-bookmark-level: 1; }
+h2 { -prince-bookmark-level: 2; }
+h3 { -prince-bookmark-level: 3; }
+h4 { -prince-bookmark-level: 4; }
+
+a {
+  color: #0057a4;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.08em;
+}
+
+ul,
+ol {
+  margin: 0.28em 0 0.55em 1.55em;
+  padding: 0;
+}
+
+li { margin: 0 0 0.2em; }
+
+.visually-hidden,
+.offense-table caption {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Full-page covers */
+
+.cover,
+.back-cover {
+  height: 11in;
+  overflow: hidden;
+  page: cover;
+  padding: 0;
+  position: relative;
+  width: 8.5in;
+}
+
+.cover { page-break-after: always; }
+.back-cover { page-break-before: always; }
+
+.full-page-cover {
+  display: block;
+  height: 11in;
+  object-fit: cover;
+  width: 8.5in;
+}
+
+.decorative-image { -prince-pdf-tag-type: artifact; }
+
+.cover-title-overlay {
+  background: transparent;
+  color: #fff;
+  left: 0.43in;
+  padding: 0;
+  position: absolute;
+  top: 9in;
+  width: 4.55in;
+}
+
+.cover-title-overlay .cover-year {
+  color: #fff;
+  font-size: 41pt;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 0.18in;
+}
+
+.cover-title-overlay h1 {
+  color: #fff;
+  font-size: 26.5pt;
+  font-weight: 700;
+  line-height: 1.18;
+  max-width: 4.3in;
+}
+
+/* Opening pages */
+
+#overview,
+#student-summary,
+#appeal-process {
+  page-break-before: always;
+}
+
+#overview,
+#student-summary {
+  padding-top: 0.42in;
+}
+
+#overview > h2,
+.section-bar {
+  background: var(--navy);
+  color: #fff;
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.22in;
+  padding: 0.07in 0.08in 0.06in;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+#overview > h3 {
+  color: #111;
+  font-size: 12pt;
+  margin: 0.22in 0 0.04in;
+  text-align: left;
+}
+
+#overview > h3:first-of-type { margin-top: 0; }
+
+#overview p {
+  font-size: 10pt;
+  line-height: 1.19;
+  margin-bottom: 0.14in;
+}
+
+.summary-header {
+  border-bottom: 4pt solid var(--navy);
+  border-top: 4pt solid var(--navy);
+  margin-bottom: 0.04in;
+  padding: 0.06in 0 0.045in;
+}
+
+.summary-brand {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.summary-brand p {
+  font-size: 14pt;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.summary-brand span { display: block; }
+
+.summary-brand img {
+  height: 0.55in;
+  object-fit: contain;
+  width: auto;
+}
+
+.summary-header > h2 {
+  color: #111;
+  font-size: 21pt;
+  font-weight: 400;
+  margin: 0.02in 0 0;
+  text-transform: uppercase;
+}
+
+#student-summary > p,
+#student-summary > ul {
+  font-size: 11pt;
+  line-height: 1.2;
+}
+
+#student-summary > ul { margin-left: 0.22in; }
+
+.full-code-link {
+  background: transparent;
+  border: 0;
+  font-weight: 700;
+  margin: 0.16in 0 0.13in;
+  padding: 0 0 0 0.23in;
+  position: relative;
+}
+
+.full-code-link::before {
+  color: var(--navy);
+  content: "➜";
+  font-size: 11pt;
+  left: 0;
+  position: absolute;
+  top: -0.08in;
+}
+
+.acknowledgment {
+  margin-top: 0.36in;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2in;
+  width: 100%;
+}
+
+.field-school { width: 81%; }
+.field-grade { width: 14%; }
+.field-student-name { width: 39%; }
+.field-signature { width: 39%; }
+.field-date { width: 14%; }
+
+.field {
+  flex: 0 0 auto;
+}
+
+.field-label {
+  display: block;
+  font-size: 8pt;
+  margin-top: 0.04in;
+}
+
+.field-line {
+  border-top: 0.75pt solid #222;
+  display: block;
+  height: 0.02in;
+  -prince-pdf-tag-type: artifact;
+}
+
+/* Discipline levels and tables */
+
+.level { page-break-before: always; }
+.section-bar {
+  font-size: 10pt;
+  margin-bottom: 0.12in;
+  padding: 0.045in 0.06in;
+}
+
+.level > h3 {
+  color: #111;
+  font-size: 12pt;
+  margin: 0 0 0.08in;
+  text-align: center;
+}
+
+.level-intro {
+  font-size: 10pt;
+  line-height: 1.2;
+  margin-bottom: 0.11in;
+}
+
+.level-intro:last-of-type { margin-bottom: 0.09in; }
+
+.offense-table {
+  border-collapse: collapse;
+  font-size: 10pt;
+  line-height: 1.2;
+  margin-left: 0;
+  margin-right: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.col-code { width: 5%; }
+.col-offense { width: 18%; }
+.col-definition { width: 39%; }
+.col-simplified { width: 38%; }
+
+.offense-table thead { display: table-header-group; }
+
+.offense-table thead th {
+  border: 0.55pt solid #333;
+  font-weight: 700;
+  padding: 0.035in 0.045in;
+  text-align: center;
+}
+
+.offense-table thead .level-title-row th {
+  background: var(--orange);
+  color: #111;
+  font-size: 12pt;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.offense-table thead .column-heading-row th {
+  background: var(--navy);
+  color: #fff;
+  font-size: 10pt;
+  line-height: 1.05;
+}
+
+.offense-table tbody.continued-page {
+  break-before: page;
+  page-break-before: always;
+}
+
+.offense-table tbody tr {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+.offense-table tbody th,
+.offense-table tbody td {
+  background: #fff;
+  border: 0.5pt solid var(--line);
+  padding: 0.035in 0.045in;
+  text-align: left;
+  vertical-align: top;
+}
+
+.offense-table th.code {
+  font-weight: 700;
+  text-align: center;
+}
+
+.offense-table th.offense { font-weight: 700; }
+.offense-table p { margin: 0 0 0.33em; }
+.offense-table p:last-child { margin-bottom: 0; }
+
+.offense-name,
+.reporting-note { display: block; }
+
+.reporting-note {
+  color: #111;
+  font-size: 8pt;
+  font-style: italic;
+  font-weight: 700;
+  margin-top: 0.16em;
+}
+
+/* Consequence panels */
+
+.consequences {
+  border: 0.65pt solid #555;
+  margin-top: 0.08in;
+  page-break-inside: avoid;
+  width: 100%;
+}
+
+.consequences h4 {
+  background: var(--navy);
+  border-bottom: 0.08in solid var(--orange);
+  color: #fff;
+  font-size: 12pt;
+  letter-spacing: 0.02em;
+  padding: 0.045in 0.06in;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.consequences ul {
+  column-count: 1;
+  font-size: 10pt;
+  line-height: 1.18;
+  margin: 0.07in 0.2in 0.05in 0.25in;
+}
+
+.consequences li { margin-bottom: 0.02in; }
+
+.mandatory-note {
+  border-top: 0.5pt solid #aaa;
+  font-size: 9pt;
+  font-style: italic;
+  margin: 0;
+  padding: 0.035in 0.07in;
+}
+
+.consequence-page { page-break-before: always; }
+
+/* Final policy panel */
+
+#appeal-process {
+  border: 0.65pt solid #555;
+  font-size: 10.5pt;
+  line-height: 1.2;
+  padding: 0 0.18in 0.12in;
+  width: 100%;
+}
+
+#appeal-process > h2 {
+  background: var(--orange);
+  color: #111;
+  font-size: 12pt;
+  margin: 0 -0.18in 0.12in;
+  padding: 0.05in 0.08in;
+  text-align: center;
+}
+
+#appeal-process > h3 {
+  color: #111;
+  font-size: 12pt;
+  margin: 0.11in 0 0.055in;
+  text-align: center;
+}
+
+#appeal-process ul { margin: 0.04in 0 0.08in 0.22in; }
+
+@media screen {
+  body { background: #e7eaed; }
+
+  main {
+    background: #fff;
+    box-shadow: 0 0 18px rgb(0 0 0 / 18%);
+    margin: 24px auto;
+    max-width: 8.5in;
+    padding: 0.42in 0.4in 0.5in;
+  }
+
+  .cover,
+  .back-cover { margin: -0.42in -0.4in 0; }
+}
+
+@media print {
+  a { color: #0057a4; }
+}
